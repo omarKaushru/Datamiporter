@@ -1,0 +1,42 @@
+﻿@model ContactstListModel
+@{
+    ViewData["Title"] = "Index";
+    Layout = "_Layout2";
+}
+<!-- Content Header (Page header) -->
+<section class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1>Contacts</h1>
+            </div>
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item"><a asp-controller="Dashboard" asp-action="Index">Dashboard</a></li>
+                    <li class="breadcrumb-item active">Contacts</li>
+                </ol>
+            </div>
+        </div>
+    </div><!-- /.container-fluid -->
+</section>
+
+<section class="content">
+    <div class="container-fluid">
+        <form asp-action="All" asp-controller="Contacts" method="post">
+            <div class="form-group">
+                <label for="inputStatus">Selcet Group</label>
+                <select asp-items="@(new SelectList(ViewBag.GroupList,"Id","Name"))" class="form-control grouplist" asp-for="GroupId">
+                </select>
+                <input type="submit" value="View" class="btn btn-success float-right">
+            </div>
+        </form>
+    </div>
+</section>
+
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            $('.grouplist').select2();
+        });
+    </script>
+}

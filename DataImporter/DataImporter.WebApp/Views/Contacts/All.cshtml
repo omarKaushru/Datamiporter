@@ -1,0 +1,76 @@
+﻿@model ContactstListModel
+@{
+    ViewData["Title"] = "All";
+    Layout = "_Layout2";
+}
+
+<!-- Content Header (Page header) -->
+<section class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1>Group Data</h1>
+            </div>
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item"><a asp-controller="Dashboard" asp-action="Index">Dashboard</a></li>
+                    <li class="breadcrumb-item active"><a asp-action="Index" asp-controller="Contacts">View Others Group Data</a></li>
+                </ol>
+            </div>
+        </div>
+    </div><!-- /.container-fluid -->
+</section>
+
+<section class="content">
+    <div class="container-fluid">
+        <div class="card-body">
+            <table id="contacts" class="table table-bordered table-hover">
+                <thead>
+                    <tr>
+                        @foreach (var item in Model.FieldName)
+                        {
+
+                            <th>@item</th>
+                        }
+                    </tr>
+                </thead>
+                <tbody>
+
+                    @for (int i = 1; i < Model.FieldValue.Count / Model.FieldName.Count; i++)
+                    {
+                        <tr>
+                            @for (int j = 1; j <= Model.FieldName.Count; j++)
+                            {
+                                <td>@Model.FieldValue[Model.Index++]</td>
+                            }
+                        </tr>
+                    }
+                </tbody>
+                <tfoot>
+                    <tr>
+                        @foreach (var item in Model.FieldName)
+                        {
+                            <th>@item</th>
+                        }
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+    </div>
+</section>
+
+@section Scripts {
+    <script>
+        $(function () {
+            $('#contacts').DataTable({
+                "paging": true,
+                "lengthChange": false,
+                "searching": false,
+                "ordering": true,
+                "info": true,
+                "autoWidth": false,
+                "responsive": true,
+            });
+        });
+    </script>
+}

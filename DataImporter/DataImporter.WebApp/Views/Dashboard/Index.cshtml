@@ -1,0 +1,57 @@
+﻿@model DashboardModel
+@{
+    ViewData["Title"] = "Index";
+    Layout = "_Layout2";
+}
+
+<!-- Content Header (Page header) -->
+<section class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1>Dashboard of Data Importer</h1>
+            </div>
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item"><a asp-controller="Home" asp-action="Index">Home</a></li>
+                    <li class="breadcrumb-item active">Dashboard</li>
+                </ol>
+            </div>
+        </div>
+    </div><!-- /.container-fluid -->
+</section>
+<!-- Main content -->
+<section class="content">
+    <div class="container-fluid">
+        <!-- Small boxes (Stat box) -->
+        <div class="row">
+            <div class="col-sm-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title"><b><u>Total Groups</u></b></h5>
+                        <p class="card-text">You Have Created <strong>Total: @Model.TotalGroups Groups</strong>.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title"><b><u>Total File Imported</u></b></h5>
+                        <p class="card-text">You Have Imported <strong>Total: @Model.TotalImported Groups</strong>.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title"><b><u>Total Exported</u></b></h5>
+                        <p class="card-text">You Have Exported <strong>Total: @Model.TotalExported Groups.</strong></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /.row -->
+        <!-- Main row -->
+        <!-- /.row (main row) -->
+    </div><!-- /.container-fluid -->
+</section>

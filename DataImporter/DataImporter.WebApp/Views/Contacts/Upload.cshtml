@@ -1,0 +1,60 @@
+﻿@model UploadFileModel
+@{
+    ViewData["Title"] = "Upload";
+    Layout = "_Layout2";
+}
+
+<!-- Content Header (Page header) -->
+<section class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1>Upload Contacts</h1>
+            </div>
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item"><a asp-controller="Dashboard" asp-action="Index">Dashboard</a></li>
+                    <li class="breadcrumb-item active">Upload</li>
+                </ol>
+            </div>
+        </div>
+    </div><!-- /.container-fluid -->
+</section>
+
+<section class="content">
+    <form asp-controller="Contacts" asp-action="Upload" method="post" enctype="multipart/form-data">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card card-primary">
+                    <div class="card-body">
+                        <div class="form-group">
+                            <label for="inputStatus">Selcet Group</label>
+                            <select asp-for="GroupId" asp-items="@(new SelectList(ViewBag.GroupList,"Id","Name"))" class="form-control grouplist">
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="inputClientCompany">Upload Excel</label>
+                            <input type="file" asp-for="iFile" class="form-control" accept=".xlsx, .xls, .csv">
+                        </div>
+                    </div>
+                    <!-- /.card-body -->
+                </div>
+                <!-- /.card -->
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <a asp-controller="Contacts" asp-action="Import" class="btn btn-secondary">Cancel</a>
+                <input type="submit" value="Upload" class="btn btn-success float-right">
+            </div>
+        </div>
+    </form>
+</section>
+
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            $('.grouplist').select2();
+        });
+    </script>
+}
