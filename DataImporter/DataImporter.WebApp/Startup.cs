@@ -41,7 +41,10 @@ namespace DataImporter.WebApp
 
             Configuration = builder.Build();
         }
-        //fdofdohfdiuhufd
+
+        /// <summary>
+        /// ghhghg
+        /// </summary>
 
         public IConfiguration Configuration { get; }
         public IWebHostEnvironment WebHostEnvironment { get; set; }
